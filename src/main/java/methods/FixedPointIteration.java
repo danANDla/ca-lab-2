@@ -48,8 +48,6 @@ public class FixedPointIteration {
             int epsCounter = 0;
             String var = eq.getVarOfConversed();
             Double approxima = eq.getConversed(current);
-            System.out.println("Approxima is " + approxima);
-            System.out.println("Broot approxima is " + Math.cos(current.get("x")) / Math.exp(current.get("x")));
             if(Math.abs(current.get(var) - approxima) <= eps) epsCounter++;
             current.replace(var, approxima);
             if (epsCounter == 1) break;
