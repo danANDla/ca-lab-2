@@ -14,10 +14,19 @@ public class eq3 implements Equation {
     }
 
     @Override
-    public Double getDerivative(HashMap<String, Double> args, String diffVar) {
+    public Double get1Derivative(HashMap<String, Double> args, String diffVar) {
         if (args.get("x") != null) {
             double x = args.get("x");
             if (Objects.equals(diffVar, "x")) return 2 * x + 2;
+        }
+        return null;
+    }
+
+    @Override
+    public Double get2Derivative(HashMap<String, Double> args, String diffVar) {
+        if (args.get("x") != null) {
+            double x = args.get("x");
+            if (Objects.equals(diffVar, "x")) return 2.0;
         }
         return null;
     }

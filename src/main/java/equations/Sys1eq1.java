@@ -15,12 +15,23 @@ public class Sys1eq1 implements Equation {
     }
 
     @Override
-    public Double getDerivative(HashMap<String, Double> args, String diffVar) {
+    public Double get1Derivative(HashMap<String, Double> args, String diffVar) {
         if (args.get("x") != null && args.get("y") != null) {
             double x = args.get("x");
             double y = args.get("y");
             if (Objects.equals(diffVar, "x")) return 2 * x + y;
             else if (Objects.equals(diffVar, "y")) return x;
+        }
+        return null;
+    }
+
+    @Override
+    public Double get2Derivative(HashMap<String, Double> args, String diffVar) {
+        if (args.get("x") != null && args.get("y") != null) {
+            double x = args.get("x");
+            double y = args.get("y");
+            if (Objects.equals(diffVar, "x")) return 2.0;
+            else if (Objects.equals(diffVar, "y")) return 0.0;
         }
         return null;
     }

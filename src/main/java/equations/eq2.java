@@ -3,7 +3,7 @@ package equations;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class eq2 implements  Equation{
+public class eq2 implements Equation {
     @Override
     public Double getImage(HashMap<String, Double> args) {
         if (args.get("x") != null) {
@@ -14,10 +14,19 @@ public class eq2 implements  Equation{
     }
 
     @Override
-    public Double getDerivative(HashMap<String, Double> args, String diffVar) {
+    public Double get1Derivative(HashMap<String, Double> args, String diffVar) {
         if (args.get("x") != null) {
             double x = args.get("x");
             if (Objects.equals(diffVar, "x")) return -1 - Math.sin(x);
+        }
+        return null;
+    }
+
+    @Override
+    public Double get2Derivative(HashMap<String, Double> args, String diffVar) {
+        if (args.get("x") != null) {
+            double x = args.get("x");
+            if (Objects.equals(diffVar, "x")) return -Math.cos(x);
         }
         return null;
     }
