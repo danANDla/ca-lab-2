@@ -35,9 +35,13 @@ public class Main {
                     if (eqid == -1) break;
                     double eps = 0.00001;
                     int iterations = 100;
-                    MethodResult res = fixedpoint.solveEquation(eqid, eps, iterations, asker.getGuessOfEq(eqid));
+                    MethodResult resSimple = fixedpoint.solveEquation(eqid, eps, iterations, asker.getGuessOfEq(eqid));
                     io.printText("метод простой итерации");
-                    io.printResult(res);
+                    io.printResult(resSimple);
+
+                    MethodResult resSecant = secantMethod.solveEquation(eqid, eps, iterations, asker.getGuessOfEq(eqid));
+                    io.printText("метод Ньютона");
+                    io.printResult(resSecant);
                 }
                 case (0): {
                     running = false;
