@@ -62,11 +62,12 @@ public class Asker {
             io.printText("}");
             io.printText("");
         }
+        io.printText("(0) отмена");
         while (!valid) {
             try {
                 sysid = Integer.parseInt(getNonEmpty()) - 1;
                 valid = true;
-                if (sysid < 0 || sysid >= systemsManager.getAllSystems().size()) {
+                if (sysid < -1 || sysid >= systemsManager.getAllSystems().size()) {
                     io.printError("Такой опции нет");
                     valid = false;
                 }
@@ -100,11 +101,12 @@ public class Asker {
             System.out.printf("(%d) ", i+1);
             io.printText(soloEquationsManager.getAllEqations().get(i).toString());
         }
+        io.printText("(0) отмена");
         while (!valid) {
             try {
                 sysid = Integer.parseInt(getNonEmpty()) - 1;
                 valid = true;
-                if (sysid < 0 || sysid >= soloEquationsManager.getAllEqations().size()) {
+                if (sysid < -1 || sysid >= soloEquationsManager.getAllEqations().size()) {
                     io.printError("Такой опции нет");
                     valid = false;
                 }

@@ -13,7 +13,7 @@ public class Main {
         SystemsManager  systemsManager = new SystemsManager();
         SoloEquationsManager soloEquationsManager = new SoloEquationsManager();
         Asker asker = new Asker(io, systemsManager, soloEquationsManager);
-        FixedPointIteration fixedpoint = new FixedPointIteration(asker, systemsManager);
+        FixedPointIteration fixedpoint = new FixedPointIteration(asker, systemsManager, soloEquationsManager);
 
         boolean running = true;
         while (running) {
@@ -21,14 +21,21 @@ public class Main {
             switch (mode) {
                 case (1): {
                     int sysid = asker.askSystem();
+                    if(sysid == -1) break;
                     double eps = 0.00001;
                     int iterations = 10;
-                    MethodResult res =fixedpoint.SolveSystem(sysid, eps, iterations, fixedpoint.getGuesses(sysid));
+                    MethodResult res =fixedpoint.SolveSystem(sysid, eps, iterations, fixedpoint.getGuessesOfSys(sysid));
                     io.printResult(res);
                     break;
                 }
                 case(2):{
                     int eqid = asker.askEquation();
+                    if(eqid == -1) break;
+                    double eps = 0.00001;
+                    int iterations = 100;
+                    MethodResult res =fixedpoint.SolveEquation(eqid, eps, iterations, fixedpoint.getGuessOfEq(eqid));
+                    io.printResult(res);
+                    break;
                 }
                 case (0): {
                     running = false;
