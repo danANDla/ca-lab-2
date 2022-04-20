@@ -26,7 +26,6 @@ public class FixedPointIteration {
         ArrayList<Equation> system =  allSystems.get(sysid);
         HashMap<String, Double> current = guesses;
 
-        System.out.println(guesses);
         while(iterations-- >= 0){
             int epsCounter = 0;
             for(int i = 0; i < system.size(); ++i){

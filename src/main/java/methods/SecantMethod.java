@@ -22,7 +22,6 @@ public class SecantMethod {
     public MethodResult solveEquation(int eqid, double eps, int iterations, HashMap<String, Double> guesses){
         Equation eq = allEquations.get(eqid);
         HashMap<String, Double> current = guesses;
-        System.out.println(guesses);
         while(iterations-- >= 0){
             int epsCounter = 0;
             String var = eq.getVarOfConversed();
