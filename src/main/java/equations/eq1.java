@@ -17,7 +17,7 @@ public class eq1 implements Equation {
     public Double get1Derivative(HashMap<String, Double> args, String diffVar) {
         if (args.get("x") != null) {
             double x = args.get("x");
-            if (Objects.equals(diffVar, "x")) return x*Math.exp(x) + Math.exp(x) - Math.sin(x);
+            if (Objects.equals(diffVar, "x")) return -x*Math.exp(x) - Math.exp(x) - Math.sin(x);
         }
         return null;
     }
@@ -26,7 +26,7 @@ public class eq1 implements Equation {
     public Double get2Derivative(HashMap<String, Double> args, String diffVar) {
         if (args.get("x") != null) {
             double x = args.get("x");
-            if (Objects.equals(diffVar, "x")) return x*Math.exp(x) + 2*Math.exp(x) - Math.cos(x);
+            if (Objects.equals(diffVar, "x")) return -x*Math.exp(x) - 2*Math.exp(x) - Math.cos(x);
         }
         return null;
     }

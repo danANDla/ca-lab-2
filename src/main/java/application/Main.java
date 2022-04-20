@@ -8,6 +8,8 @@ import methods.SecantMethod;
 import utils.Asker;
 import utils.IOutil;
 
+import java.util.HashMap;
+
 public class Main {
     public static void main(String[] args) {
         IOutil io = new IOutil();
@@ -33,15 +35,22 @@ public class Main {
                 case (2): {
                     int eqid = asker.askEquation();
                     if (eqid == -1) break;
-                    double eps = 0.00001;
-                    int iterations = 100;
-                    MethodResult resSimple = fixedpoint.solveEquation(eqid, eps, iterations, asker.getGuessOfEq(eqid));
-                    io.printText("метод простой итерации");
+                    double eps = asker.askEps();
+                    int iterations = asker.askIterations();
+                    HashMap<String, Double> guess = asker.getGuessOfEq(eqid);
+                    MethodResult resSimple = fixedpoint.solveEquation(eqid, eps, iterations, guess);
+
+                    io.printWarning("метод простой итерации");
                     io.printResult(resSimple);
 
-                    MethodResult resSecant = secantMethod.solveEquation(eqid, eps, iterations, asker.getGuessOfEq(eqid));
-                    io.printText("метод Ньютона");
+                    MethodResult resSecant = secantMethod.solveEquation(eqid, eps, iterations, guess);
+                    io.printWarning("метод Ньютона");
                     io.printResult(resSecant);
+
+                    io.printText("");
+                    io.printText("diff = " + Math.abs(resSecant.getValues().get("x") - resSimple.getValues().get("x")));
+
+                    break;
                 }
                 case (0): {
                     running = false;

@@ -115,6 +115,36 @@ public class Asker {
         return guess;
     }
 
+    public double askEps(){
+        io.printText("Введите точность");
+        boolean valid = false;
+        double eps = 0;
+        while (!valid) {
+            try {
+                eps = Double.parseDouble(getNonEmpty());
+                valid = true;
+            } catch (NumberFormatException e) {
+                io.printError("Неправильный формат числа");
+            }
+        }
+        return eps;
+    }
+
+    public int askIterations(){
+        io.printText("Введите максимальное количество итераций");
+        boolean valid = false;
+        int iterations = 0;
+        while (!valid) {
+            try {
+                iterations = Integer.parseInt(getNonEmpty());
+                valid = true;
+            } catch (NumberFormatException e) {
+                io.printError("Неправильный формат числа");
+            }
+        }
+        return iterations;
+    }
+
     public int askEquation(){
         int sysid = 0;
         boolean valid = false;
