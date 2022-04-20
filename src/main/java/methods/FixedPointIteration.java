@@ -22,26 +22,6 @@ public class FixedPointIteration {
         allEquations = soloEquationsManager.getAllEqations();
     }
 
-    public HashMap<String, Double> getGuessesOfSys(int sysid){
-        ArrayList<Equation> system =  allSystems.get(sysid);
-        HashMap<String, Double> res = new HashMap<>();
-        for(int i = 0; i < system.size(); ++i){
-            String var = system.get(i).getVarOfConversed();
-            double guess = asker.askGuess(var);
-            res.put(var, guess);
-        }
-        return res;
-    }
-
-    public HashMap<String, Double> getGuessOfEq(int eqid){
-        Equation eq = allEquations.get(eqid);
-        HashMap<String, Double> res = new HashMap<>();
-        String var = eq.getVarOfConversed();
-        double guess = asker.askGuess(var);
-        res.put(var, guess);
-        return res;
-    }
-
     public MethodResult SolveSystem(int sysid, double eps, int iterations, HashMap<String, Double> guesses){
         ArrayList<Equation> system =  allSystems.get(sysid);
         HashMap<String, Double> current = guesses;

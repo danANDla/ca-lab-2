@@ -3,6 +3,8 @@ import equations.Equation;
 import equations.SoloEquationsManager;
 import equations.SystemsManager;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class Asker {
@@ -78,7 +80,27 @@ public class Asker {
         return sysid;
     }
 
-    public double askGuess(String var){
+    public HashMap<String, Double> getGuessesOfSys(int sysid){
+        ArrayList<Equation> system =  systemsManager.getAllSystems().get(sysid);
+        HashMap<String, Double> res = new HashMap<>();
+        for(int i = 0; i < system.size(); ++i){
+            String var = system.get(i).getVarOfConversed();
+            double guess = askGuess(var);
+            res.put(var, guess);
+        }
+        return res;
+    }
+
+    public HashMap<String, Double> getGuessOfEq(int eqid){
+        Equation eq = soloEquationsManager.getAllEqations().get(eqid);
+        HashMap<String, Double> res = new HashMap<>();
+        String var = eq.getVarOfConversed();
+        double guess = askGuess(var);
+        res.put(var, guess);
+        return res;
+    }
+
+    private double askGuess(String var){
         io.printText("Введите нулевое приближение переменной " + var);
         boolean valid = false;
         double guess = 0;

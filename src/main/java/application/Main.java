@@ -24,7 +24,7 @@ public class Main {
                     if(sysid == -1) break;
                     double eps = 0.00001;
                     int iterations = 10;
-                    MethodResult res =fixedpoint.SolveSystem(sysid, eps, iterations, fixedpoint.getGuessesOfSys(sysid));
+                    MethodResult res =fixedpoint.SolveSystem(sysid, eps, iterations, asker.getGuessesOfSys(sysid));
                     io.printResult(res);
                     break;
                 }
@@ -33,7 +33,7 @@ public class Main {
                     if(eqid == -1) break;
                     double eps = 0.00001;
                     int iterations = 100;
-                    MethodResult res =fixedpoint.SolveEquation(eqid, eps, iterations, fixedpoint.getGuessOfEq(eqid));
+                    MethodResult res =fixedpoint.SolveEquation(eqid, eps, iterations, asker.getGuessOfEq(eqid));
                     io.printResult(res);
                     break;
                 }
