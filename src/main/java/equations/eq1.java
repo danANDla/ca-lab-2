@@ -3,34 +3,30 @@ package equations;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class Sys1eq1 implements Equation {
+public class eq1 implements Equation {
     @Override
     public Double getImage(HashMap<String, Double> args) {
-        if (args.get("x") != null && args.get("y") != null) {
+        if (args.get("x") != null) {
             double x = args.get("x");
-            double y = args.get("y");
-            return x * x + x * y - 10;
+            return Math.cos(x) - x * Math.exp(x);
         }
         return null;
     }
 
     @Override
     public Double getDerivative(HashMap<String, Double> args, String diffVar) {
-        if (args.get("x") != null && args.get("y") != null) {
+        if (args.get("x") != null) {
             double x = args.get("x");
-            double y = args.get("y");
-            if (Objects.equals(diffVar, "x")) return 2 * x + y;
-            else if (Objects.equals(diffVar, "y")) return x;
+            if (Objects.equals(diffVar, "x")) return x*Math.exp(x) + Math.exp(x) - Math.sin(x);
         }
         return null;
     }
 
     @Override
     public Double getConversed(HashMap<String, Double> args) {
-        if (args.get("x") != null && args.get("y") != null) {
+        if (args.get("x") != null) {
             double x = args.get("x");
-            double y = args.get("y");
-            return Math.sqrt(10 - x * y);
+            return Math.cos(x) / Math.exp(x);
         }
         return null;
     }
@@ -41,8 +37,7 @@ public class Sys1eq1 implements Equation {
     }
 
     public String toString() {
-        String s = "x^2 + x*y - 10 = 0";
+        String s = "f(x) = cos(x) - x*exp(x)";
         return s;
     }
 }
-

@@ -50,8 +50,4 @@ public class FixedPointIteration {
         }
         return  new MethodResult(current, Status.OK);
     }
-
-//    private Equation getEquation(int sysId){
-//
-//    }
 }

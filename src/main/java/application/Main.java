@@ -1,5 +1,6 @@
 package application;
 
+import equations.SoloEquationsManager;
 import equations.SystemsManager;
 import methods.FixedPointIteration;
 import methods.MethodResult;
@@ -10,7 +11,8 @@ public class Main {
     public static void main(String[] args) {
         IOutil io = new IOutil();
         SystemsManager  systemsManager = new SystemsManager();
-        Asker asker = new Asker(io, systemsManager);
+        SoloEquationsManager soloEquationsManager = new SoloEquationsManager();
+        Asker asker = new Asker(io, systemsManager, soloEquationsManager);
         FixedPointIteration fixedpoint = new FixedPointIteration(asker, systemsManager);
 
         boolean running = true;
@@ -24,6 +26,9 @@ public class Main {
                     MethodResult res =fixedpoint.SolveSystem(sysid, eps, iterations, fixedpoint.getGuesses(sysid));
                     io.printResult(res);
                     break;
+                }
+                case(2):{
+                    int eqid = asker.askEquation();
                 }
                 case (0): {
                     running = false;
