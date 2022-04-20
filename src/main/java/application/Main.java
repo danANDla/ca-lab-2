@@ -4,16 +4,18 @@ import equations.SoloEquationsManager;
 import equations.SystemsManager;
 import methods.FixedPointIteration;
 import methods.MethodResult;
+import methods.SecantMethod;
 import utils.Asker;
 import utils.IOutil;
 
 public class Main {
     public static void main(String[] args) {
         IOutil io = new IOutil();
-        SystemsManager  systemsManager = new SystemsManager();
+        SystemsManager systemsManager = new SystemsManager();
         SoloEquationsManager soloEquationsManager = new SoloEquationsManager();
         Asker asker = new Asker(io, systemsManager, soloEquationsManager);
         FixedPointIteration fixedpoint = new FixedPointIteration(asker, systemsManager, soloEquationsManager);
+        SecantMethod secantMethod = new SecantMethod(asker, systemsManager, soloEquationsManager);
 
         boolean running = true;
         while (running) {
@@ -21,21 +23,21 @@ public class Main {
             switch (mode) {
                 case (1): {
                     int sysid = asker.askSystem();
-                    if(sysid == -1) break;
+                    if (sysid == -1) break;
                     double eps = 0.00001;
                     int iterations = 10;
-                    MethodResult res =fixedpoint.SolveSystem(sysid, eps, iterations, asker.getGuessesOfSys(sysid));
+                    MethodResult res = fixedpoint.solveSystem(sysid, eps, iterations, asker.getGuessesOfSys(sysid));
                     io.printResult(res);
                     break;
                 }
-                case(2):{
+                case (2): {
                     int eqid = asker.askEquation();
-                    if(eqid == -1) break;
+                    if (eqid == -1) break;
                     double eps = 0.00001;
                     int iterations = 100;
-                    MethodResult res =fixedpoint.SolveEquation(eqid, eps, iterations, asker.getGuessOfEq(eqid));
+                    MethodResult res = fixedpoint.solveEquation(eqid, eps, iterations, asker.getGuessOfEq(eqid));
+                    io.printText("метод простой итерации");
                     io.printResult(res);
-                    break;
                 }
                 case (0): {
                     running = false;

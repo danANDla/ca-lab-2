@@ -22,7 +22,7 @@ public class FixedPointIteration {
         allEquations = soloEquationsManager.getAllEqations();
     }
 
-    public MethodResult SolveSystem(int sysid, double eps, int iterations, HashMap<String, Double> guesses){
+    public MethodResult solveSystem(int sysid, double eps, int iterations, HashMap<String, Double> guesses){
         ArrayList<Equation> system =  allSystems.get(sysid);
         HashMap<String, Double> current = guesses;
 
@@ -40,7 +40,7 @@ public class FixedPointIteration {
         return  new MethodResult(current, Status.OK);
     }
 
-    public MethodResult SolveEquation(int eqid, double eps, int iterations, HashMap<String, Double> guesses){
+    public MethodResult solveEquation(int eqid, double eps, int iterations, HashMap<String, Double> guesses){
         Equation eq = allEquations.get(eqid);
         HashMap<String, Double> current = guesses;
         System.out.println(guesses);
