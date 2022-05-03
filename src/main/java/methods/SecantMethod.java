@@ -21,10 +21,11 @@ public class SecantMethod {
 
     public MethodResult solveEquation(int eqid, double eps, int iterations, HashMap<String, Double> guesses){
         Equation eq = allEquations.get(eqid);
-        HashMap<String, Double> current = guesses;
+        String var = eq.getVarOfConversed();
+        HashMap<String, Double> current = new HashMap<>();
+        current.put(var, guesses.get(var));
         while(iterations-- >= 0){
             int epsCounter = 0;
-            String var = eq.getVarOfConversed();
             Double approxima = current.get(var) - eq.getImage(current) / eq.get1Derivative(current, var);
             if(Math.abs(current.get(var) - approxima) <= eps) epsCounter++;
             current.replace(var, approxima);
