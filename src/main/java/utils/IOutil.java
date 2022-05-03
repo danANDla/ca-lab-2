@@ -88,7 +88,7 @@ public class IOutil{
         HashMap<String, Double> vars = res.getValues();
         System.out.println(res.getStatus().getDescription());
         for(Map.Entry<String, Double> variable: vars.entrySet()){
-            System.out.printf("%3s = %4.4f\n", variable.getKey(), variable.getValue());
+            System.out.printf("%3s = %4.9f\n", variable.getKey(), variable.getValue());
         }
     }
 }
