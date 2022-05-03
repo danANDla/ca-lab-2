@@ -42,7 +42,7 @@ public class Sys1eq2 implements Equation {
         if (args.get("x") != null && args.get("y") != null) {
             double x = args.get("x");
             double y = args.get("y");
-            return Math.sqrt((57 - y) / (3 * y));
+            return Math.sqrt((57 - y) / (3 * x));
         }
         return null;
     }

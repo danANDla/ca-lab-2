@@ -26,8 +26,8 @@ public class Main {
                 case (1): {
                     int sysid = asker.askSystem();
                     if (sysid == -1) break;
-                    double eps = 0.00001;
-                    int iterations = 10;
+                    double eps = asker.askEps();
+                    int iterations = asker.askIterations();
                     MethodResult res = fixedpoint.solveSystem(sysid, eps, iterations, asker.getGuessesOfSys(sysid));
                     io.printResult(res);
                     break;
