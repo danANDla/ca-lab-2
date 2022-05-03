@@ -38,17 +38,19 @@ public class Main {
                     double eps = asker.askEps();
                     int iterations = asker.askIterations();
                     HashMap<String, Double> guess = asker.getGuessOfEq(eqid);
-                    MethodResult resSimple = fixedpoint.solveEquation(eqid, eps, iterations, guess);
 
+                    MethodResult resSimple = fixedpoint.solveEquation(eqid, eps, iterations, guess);
+                    double simple = resSimple.getValues().get("x");
                     io.printWarning("метод простой итерации");
                     io.printResult(resSimple);
 
                     MethodResult resSecant = secantMethod.solveEquation(eqid, eps, iterations, guess);
+                    double secant = resSecant.getValues().get("x");
                     io.printWarning("метод Ньютона");
                     io.printResult(resSecant);
 
                     io.printText("");
-                    io.printText("diff = " + Math.abs(resSecant.getValues().get("x") - resSimple.getValues().get("x")));
+                    io.printText("diff = " + Math.abs(secant - simple));
 
                     break;
                 }
