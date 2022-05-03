@@ -44,7 +44,6 @@ public class FixedPointIteration {
         String var = eq.getVarOfConversed();
         HashMap<String, Double> current = new HashMap<>();
         current.put(var, guesses.get(var));
-        System.out.println(guesses);
         while(iterations-- >= 0){
             int epsCounter = 0;
             Double approxima = eq.getConversed(current);

@@ -38,6 +38,7 @@ public class Main {
                     double eps = asker.askEps();
                     int iterations = asker.askIterations();
                     HashMap<String, Double> guess = asker.getGuessOfEq(eqid);
+                    System.out.println(guess);
 
                     MethodResult resSimple = fixedpoint.solveEquation(eqid, eps, iterations, guess);
                     double simple = resSimple.getValues().get("x");
